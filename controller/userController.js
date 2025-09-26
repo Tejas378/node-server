@@ -24,8 +24,8 @@ export const creatUser = async (req, res) => {
 };
 export const getUsers = async (req, res) => {
   try {
-    // const result = await User.find();
-    res.status(200).json({ isSuccess: true, user: {"SS":"ss"} });
+    const result = await User.find();
+    res.status(200).json({ isSuccess: true, user: result });
   } catch (err) {
     res.status(500).json({ isSuccess: false, error: err.message });
   }
