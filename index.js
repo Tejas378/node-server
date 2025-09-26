@@ -16,14 +16,11 @@ app.use(express.json());
 // DB connection
 dbConnection();
 
-
-
-
 app.use("/api/v1/", router);
 // Routes
-app.use("/", (req, res) => {
-  res.status(200).send("Server working properly");
-});
+// app.use("/", (req, res) => {
+//   res.status(200).send("Server working properly");
+// });
 // Start server
 const PORT = process.env.PORT || 5000;
 
