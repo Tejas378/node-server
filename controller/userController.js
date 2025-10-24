@@ -1,27 +1,84 @@
-import { User } from "./../models/user.js";
-import { compareHash, generateHash } from "../utils/helper.js";
+import User from "./../models/user.js";
+import { compareHash, generateHash, generateJwtToken, verifyJwtToken } from "../utils/helper.js";
+import { profileSchema, signupSchema } from "../validastors/profileValidator.js";
+
+export const updateProfile = async (req, res) => {
+  try {
+    const { email, firstname, lastname, contactno } = req.body;
+
+    // Find existing user
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Validate profile with abortEarly: false
+    const { error: profileError } = profileSchema.validate(
+      { firstname, lastname, email, contactno },
+      { abortEarly: false }
+    );
+
+    // Validate address with abortEarly: false
+    // const { error: addressError } = addressSchema.validate(
+    //   { street, city, state, pinCode },
+    //   { abortEarly: false }
+    // );
+
+    // Collect all errors
+    const errors = [];
+    if (profileError) errors.push(...profileError.details.map(e => e.message));
+    // if (addressError) errors.push(...addressError.details.map(e => e.message));
+
+    if (errors.length > 0) {
+      return res.status(400).json({ errors }); // Send all errors at once
+    }
+
+    // Update nested objects
+    user.firstname = firstname;
+    user.lastname = lastname;
+    user.contactno = contactno;
+    user.email = email;
+    // user.street = street || "";
+    // user.city = city || "";
+    // user.state = state || "";
+    // user.pinCode = pinCode || "";
+
+    const updatedUser = await user.save();
+
+    return res.status(200).json({
+      message: "Profile updated successfully",
+      data: updatedUser,
+    });
+
+  } catch (err) {
+    console.error("Error occured", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+
 export const creatUser = async (req, res) => {
   try {
     console.log("iN CREATE ");
-    
-    const { firstName, lastName, email, contactNumber, password } = req.body;
-    console.log(firstName, lastName, email, contactNumber, password);
+    const { firstname, lastname, email, contactno, password } = req.body;
+    // Find user
+    const user = await User.findOne({ email });
+    if (user)
+      res.status(403).json({ isSuccess: false, message: "User with this email already exists.Please enter another email." });
 
-    let user =false ;// await User.findOne({ email: email })
-
-    console.log(req.body);
-    
-
-    if(user)
-    res.status(403).json({ isSuccess: false, message:"User with this email already exists.Please enter another email." });
-
+    const { error: signupdataErrors } = signupSchema.validateAsync({ firstname, lastname, email, contactno, password }, { abortEarly: false })
+    const errors = [];
+    if (signupdataErrors) errors.push(...signupdataErrors.details.map(e => e.message));
+    if (errors.length > 0) {
+      return res.status(400).json({ errors }); // Send all errors at once
+    }
     const hashPassword = await generateHash(password);
-    const result = await User.create({ firstName, lastName, email, contactNumber, password: hashPassword });
+    const result = await User.create({ firstname, lastname, email, contactno, password: hashPassword });
     res.status(201).json({ isSuccess: true, result });
   } catch (err) {
     res.status(500).json({ isSuccess: false, error: err.message });
   }
 };
+
 export const getUsers = async (req, res) => {
   try {
     const result = await User.find();
@@ -32,21 +89,53 @@ export const getUsers = async (req, res) => {
 };
 
 export const loginUser = async (req, res) => {
-  const { email, password } = req.body
-  console.log(email, password);
+  try {
+    const { email, password } = req.body;
+    console.log(email, password);
 
-  let user = await User.findOne({ email: email })
-  console.log(user);
+    // Find user
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({
+        isSuccess: false,
+        message: "User not found."
+      });
+    }
 
-  if (user) {
-    const checkIsValidPass = await compareHash(password, user?.password);
+    // Check password
+    const checkIsValidPass = await compareHash(password, user.password);
+    if (!checkIsValidPass) {
+      return res.status(401).json({
+        isSuccess: false,
+        message: "Email or password do not match"
+      });
+    }
 
-    if (checkIsValidPass)
-      res.status(200).json({ isSuccess: true, data: user })
-    else
-      res.status(401).json({ isSuccess: false, message: "Email or password do not match" });
+    // Prepare payload
+    const payload = {
+      email: user.email,
+      id: user._id,
+      fName: user.firstName,
+      lName: user.lastName,
+      createdAt: new Date()
+    };
+
+    // Send response
+    return res.status(200).json({
+      isSuccess: true,
+      data: payload,
+      token: generateJwtToken(payload)
+    });
+
+
+
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({
+      isSuccess: false,
+      message: "Internal server error"
+    });
   }
-  else {
-    res.status(404).json({ isSuccess: false, message: "User not found." });
-  }
-}
+};
+
+
