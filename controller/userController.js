@@ -30,7 +30,7 @@ export const updateProfile = async (req, res) => {
     // if (addressError) errors.push(...addressError.details.map(e => e.message));
 
     if (errors.length > 0) {
-      return res.status(400).json({ errors }); // Send all errors at once
+      return res.status(400).json({ isSuccess: false, message: errors.join(",") }); // Send all errors at once
     }
 
     // Update nested objects
@@ -43,16 +43,23 @@ export const updateProfile = async (req, res) => {
     // user.state = state || "";
     // user.pinCode = pinCode || "";
 
-    const updatedUser = await user.save();
-
+    await user.save();
     return res.status(200).json({
-      message: "Profile updated successfully",
-      data: updatedUser,
+      isSuccess: true,
+      data: {
+        email: user.email,
+        id: user._id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        contactno: user.contactno
+      },
+      message: "Profile updated successfully."
+
     });
 
   } catch (err) {
     console.error("Error occured", err);
-    return res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ isSuccess: false, error: "Server error" });
   }
 };
 
@@ -69,7 +76,7 @@ export const creatUser = async (req, res) => {
     const errors = [];
     if (signupdataErrors) errors.push(...signupdataErrors.details.map(e => e.message));
     if (errors.length > 0) {
-      return res.status(400).json({ errors }); // Send all errors at once
+      return res.status(400).json({ isSuccess: false, message: errors.join(",") }); // Send all errors at once
     }
     const hashPassword = await generateHash(password);
     const result = await User.create({ firstname, lastname, email, contactno, password: hashPassword });
@@ -107,7 +114,7 @@ export const loginUser = async (req, res) => {
     if (!checkIsValidPass) {
       return res.status(401).json({
         isSuccess: false,
-        message: "Email or password do not match"
+        message: "Email or password do not match."
       });
     }
 
@@ -115,9 +122,9 @@ export const loginUser = async (req, res) => {
     const payload = {
       email: user.email,
       id: user._id,
-      fName: user.firstName,
-      lName: user.lastName,
-      createdAt: new Date()
+      firstname: user.firstname,
+      lastname: user.lastname,
+      contactno: user.contactno
     };
 
     // Send response
