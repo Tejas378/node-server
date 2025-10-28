@@ -13,6 +13,7 @@ const serviceCenterSchema = new mongoose.Schema({
     },
     servicesOffered: [String],
     isVerified: { type: Boolean, default: false },
+    isActive: { type: Boolean, default: true }
 });
 
 export default mongoose.model("serviceCenterSchema", serviceCenterSchema)

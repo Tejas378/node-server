@@ -4,18 +4,18 @@ import { Booking } from "../models/bookings.js";
 export const createBooking = async (req, res) => {
   try {
     const {
+      userId,
       serviceCenterId,
       vehicle,
       services,
-      date,
+      datetime,
       contactDetails,
       notes,
     } = req.body;
 
     // userId from JWT (if available)
-    const userId = req.user?._id || null;
 
-    if (!serviceCenterId || !date) {
+    if (!serviceCenterId || !datetime) {
       return res
         .status(400)
         .json({ success: false, message: "Service center and date are required" });
@@ -26,7 +26,7 @@ export const createBooking = async (req, res) => {
       serviceCenterId,
       vehicle,
       services,
-      date,
+      datetime,
       contactDetails,
       notes,
     });
@@ -35,12 +35,12 @@ export const createBooking = async (req, res) => {
     const populatedBooking = await booking.populate("serviceCenterId", "name");
 
     res.status(201).json({
-      success: true,
+      isSuccess: true,
       message: "Booking created successfully",
-      data: populatedBooking,
+      data: booking,
     });
   } catch (err) {
     console.error("Booking error:", err);
-    res.status(500).json({ success: false, message: "Server error", error: err });
+    res.status(500).json({ isSuccess: false, message: "Server error", error: err });
   }
 };
