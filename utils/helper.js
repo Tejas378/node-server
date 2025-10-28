@@ -6,9 +6,8 @@ dotenv.config({ path: "../config/config.env" });
 
 export const generateHash = async (plainPassword) => {
 
-    const salt = await bcrypt.genSaltSync(saltRounds);
-    const hash = await bcrypt.hashSync(plainPassword, salt);
-    console.log(hash);
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(plainPassword, salt);
     return hash;
 }
 export const compareHash = async (plainPassword, hashedPass) => {
