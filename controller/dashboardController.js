@@ -1,6 +1,6 @@
 import { Booking } from "../models/bookings.js";
 import { validateRequiredFields, validateObjectId } from "../utils/validation.js";
-import { logErrorToFile } from "./../utils/logger.js"
+import { logErrorToFile } from "./../utils/logger.js";
 export const getUserDashboard = async (req, res) => {
     try {
         const { userId } = req.params;
@@ -37,6 +37,6 @@ export const getUserDashboard = async (req, res) => {
         res.status(200).json({ isSuccess: true, summary, activeBookings, pastBookings, cancelledBookings });
     } catch (error) {
         logErrorToFile(error, "Test")
-        res.status(500).json({ isSuccess: false, message: "Server error" });
+        res.status(500).json({ isSuccess: false, message: "Internal server error"});
     }
 };

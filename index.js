@@ -6,6 +6,7 @@ import userRoutes from "./routes/userRoutes.js";
 import dashboardrouter from "./routes/dashboardRoutes.js"
 import bookingRoutes from "./routes/bookingRoutes.js";
 import serviceCenterRoutes from "./routes/serviceCenterRoutes.js"
+import bodyParser from "body-parser";
 dotenv.config({ path: "./config/config.env" });
 
 const app = express();
@@ -14,8 +15,11 @@ const app = express();
 app.use(cors({ origin: ["http://localhost:5173", "https://garage-pro-wine.vercel.app"] }));
 
 app.use(express.json());
+app.use(bodyParser.urlencoded())
 
-// DB connection
+// parse application/json
+// app.use(bodyParser.json())// DB connection
+
 dbConnection();
 
 app.use("/api/v1/user", userRoutes);

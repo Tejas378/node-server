@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   contactno: { type: String, required: true },
   password: { type: String, require: true },
+  profileImage: { type: String, require: false },
 }, { timestamps: true });
 
 export default mongoose.model("User", userSchema);

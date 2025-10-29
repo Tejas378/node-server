@@ -1,5 +1,6 @@
 // controllers/serviceCenterController.js
 import ServiceCenter from "../models/serviceCenter.js";
+import { logErrorToFile } from "./../utils/logger.js";
 
 export const createServiceCenter = async (req, res) => {
     try {
@@ -28,11 +29,10 @@ export const createServiceCenter = async (req, res) => {
             data: newCenter,
         });
     } catch (error) {
-        console.error("Error creating service center:", error);
+        logErrorToFile(error, "createServiceCenter")
         res.status(500).json({
             success: false,
-            message: "Server error while creating service center.",
-            error: error.message,
+            message: "Internal server error"
         });
     }
 };
@@ -44,7 +44,8 @@ export const getServiceCenters = async (req, res) => {
         res.status(200).json({ isSuccess: true, data: result })
     }
     catch (error) {
-        res.status(500).json({ isSuccess: false, error: err.message });
+        logErrorToFile(err, "getServiceCenters")
+        res.status(500).json({ isSuccess: false, message: "Internal server error" });
 
     }
 

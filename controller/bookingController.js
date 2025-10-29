@@ -1,6 +1,7 @@
 import { Booking } from "../models/bookings.js";
-import { validateRequiredFields } from "./../utils/validation.js"
-// ✅ Create new booking (for logged-in user or guest)
+import { validateRequiredFields } from "./../utils/validation.js";
+import { logErrorToFile } from "./../utils/logger.js";
+
 export const createBooking = async (req, res) => {
   try {
     const {
@@ -41,9 +42,8 @@ export const createBooking = async (req, res) => {
       data: populatedBooking,
     });
   } catch (err) {
-    logErrorToFile(err, "Test")
-
+    logErrorToFile(err, "createBooking")
     console.error("Booking error:", err);
-    return res.status(500).json({ isSuccess: false, message: "Server error", error: err });
+    return res.status(500).json({ isSuccess: false,  message: "Internal server error"});
   }
 };

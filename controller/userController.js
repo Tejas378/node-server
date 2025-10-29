@@ -26,7 +26,7 @@ export const creatUser = async (req, res) => {
     const accessToken = await generateJwtToken(payload);
     res.status(201).json({ isSuccess: true, data: payload, token: accessToken });
   } catch (err) {
-    logErrorToFile(err,"Test")
+    logErrorToFile(err, "Test")
     res.status(500).json({ isSuccess: false, error: err.message });
   }
 };
@@ -43,8 +43,6 @@ export const getUsers = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email, password);
-
     // Find user
     const user = await User.findOne({ email });
     if (!user) {
@@ -70,6 +68,7 @@ export const loginUser = async (req, res) => {
       firstname: user.firstname,
       lastname: user.lastname,
       contactno: user.contactno,
+       profileImage: user.profileImage
     };
 
     // Send response
@@ -140,7 +139,8 @@ export const updateProfile = async (req, res) => {
         id: user._id,
         firstname: user.firstname,
         lastname: user.lastname,
-        contactno: user.contactno
+        contactno: user.contactno,
+        profileImage: user.profileImage
       },
       message: "Profile updated successfully."
 
@@ -149,5 +149,49 @@ export const updateProfile = async (req, res) => {
   } catch (err) {
     console.error("Error occured", err);
     return res.status(500).json({ isSuccess: false, error: "Server error" });
+  }
+};
+
+export const uploadProfile = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "No file uploaded",
+      });
+    }
+
+    const filePath = `/uploads/${req.file.filename}`;
+
+    const { email } = req.body
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    user.profileImage = filePath;
+
+    const result = await user.save()
+
+    return res.status(200).json({
+      isSuccess: true,
+      data: {
+        email: user.email,
+        id: user._id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        contactno: user.contactno,
+        profileImage: user.profileImage
+      },
+      message: "Profile updated successfully."
+
+    });
+  } catch (error) {
+    console.error("Upload error:", error);
+    res.status(500).json({
+      isSuccess: false,
+      message: "Internal server error",
+    });
   }
 };
