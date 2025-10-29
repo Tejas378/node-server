@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const serviceCenterSchema = new mongoose.Schema({
+const serviceCenter = new mongoose.Schema({
     name: String,
     ownerName: String,
     email: String,
@@ -16,4 +16,4 @@ const serviceCenterSchema = new mongoose.Schema({
     isActive: { type: Boolean, default: true }
 });
 
-export default mongoose.model("serviceCenterSchema", serviceCenterSchema)
+export default mongoose.model("serviceCenter", serviceCenter)

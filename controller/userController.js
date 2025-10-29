@@ -1,6 +1,7 @@
 import User from "./../models/user.js";
 import { compareHash, generateHash, generateJwtToken, verifyJwtToken } from "../utils/helper.js";
 import { profileSchema, signupSchema } from "../validastors/profileValidator.js";
+import { logErrorToFile } from "../utils/logger.js";
 
 
 
@@ -25,6 +26,7 @@ export const creatUser = async (req, res) => {
     const accessToken = await generateJwtToken(payload);
     res.status(201).json({ isSuccess: true, data: payload, token: accessToken });
   } catch (err) {
+    logErrorToFile(err,"Test")
     res.status(500).json({ isSuccess: false, error: err.message });
   }
 };
@@ -67,7 +69,7 @@ export const loginUser = async (req, res) => {
       id: user._id,
       firstname: user.firstname,
       lastname: user.lastname,
-      contactno: user.contactno
+      contactno: user.contactno,
     };
 
     // Send response

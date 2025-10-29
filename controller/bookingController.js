@@ -1,5 +1,5 @@
 import { Booking } from "../models/bookings.js";
-
+import { validateRequiredFields } from "./../utils/validation.js"
 // ✅ Create new booking (for logged-in user or guest)
 export const createBooking = async (req, res) => {
   try {
@@ -13,12 +13,13 @@ export const createBooking = async (req, res) => {
       notes,
     } = req.body;
 
-    // userId from JWT (if available)
+    const isAllRequiredFieldsExist = await validateRequiredFields(req.body, ["serviceCenterId", "vehicle.regNumber", "services",
+      "datetime", "contactDetails.email", "contactDetails.phone"]);
 
-    if (!serviceCenterId || !datetime) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Service center and date are required" });
+    if (!isAllRequiredFieldsExist.isValid) {
+      return res.status(400).json({
+        isSuccess: false, message: isAllRequiredFieldsExist.errors
+      })
     }
 
     const booking = await Booking.create({
@@ -34,13 +35,15 @@ export const createBooking = async (req, res) => {
     // populate center name for response clarity
     const populatedBooking = await booking.populate("serviceCenterId", "name");
 
-    res.status(201).json({
+    return res.status(201).json({
       isSuccess: true,
       message: "Booking created successfully",
-      data: booking,
+      data: populatedBooking,
     });
   } catch (err) {
+    logErrorToFile(err, "Test")
+
     console.error("Booking error:", err);
-    res.status(500).json({ isSuccess: false, message: "Server error", error: err });
+    return res.status(500).json({ isSuccess: false, message: "Server error", error: err });
   }
 };

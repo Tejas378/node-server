@@ -10,7 +10,7 @@ const bookingSchema = new mongoose.Schema(
     },
     serviceCenterId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "serviceCenterSchema",
+      ref: "serviceCenter",
       required: true,
     },
     vehicle: {
