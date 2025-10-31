@@ -12,7 +12,7 @@ dotenv.config({ path: "./config/config.env" });
 const app = express();
 
 // Middleware
-app.use(cors({ origin: ["http://localhost:5173", "https://garage-pro-wine.vercel.app"] }));
+app.use(cors({ origin: ["http://localhost:5173", "https://garage-pro-wine.vercel.app","https://garage-pro-wine.vercel.app/"] }));
 
 app.use(express.json());
 app.use(bodyParser.urlencoded())

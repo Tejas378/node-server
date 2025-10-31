@@ -2,6 +2,8 @@ import express from "express";
 import { creatUser, getUsers, loginUser, updateProfile, uploadProfile } from "../controller/userController.js";
 import multer from "multer";
 // Multer config
+const router = express.Router();
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, "uploads/"),
     filename: (req, file, cb) =>
@@ -18,7 +20,6 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage, fileFilter });
 
-const router = express.Router();
 
 router.post("/register", creatUser);
 router.get("/getAll", getUsers);
