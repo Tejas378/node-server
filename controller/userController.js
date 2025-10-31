@@ -68,7 +68,7 @@ export const loginUser = async (req, res) => {
       firstname: user.firstname,
       lastname: user.lastname,
       contactno: user.contactno,
-       profileImage: user.profileImage
+      profileImage: user.profileImage
     };
 
     // Send response
@@ -172,7 +172,7 @@ export const uploadProfile = async (req, res) => {
 
     user.profileImage = filePath;
 
-    const result = await user.save()
+    const result = await user.save();
 
     return res.status(200).json({
       isSuccess: true,
@@ -182,7 +182,7 @@ export const uploadProfile = async (req, res) => {
         firstname: user.firstname,
         lastname: user.lastname,
         contactno: user.contactno,
-        profileImage: user.profileImage
+        profileImage: result.profileImage
       },
       message: "Profile updated successfully."
 

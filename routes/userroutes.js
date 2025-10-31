@@ -1,5 +1,5 @@
 import express from "express";
-import { creatUser, getUsers, loginUser, updateProfile ,uploadProfile } from "../controller/userController.js";
+import { creatUser, getUsers, loginUser, updateProfile, uploadProfile } from "../controller/userController.js";
 import multer from "multer";
 // Multer config
 const storage = multer.diskStorage({
@@ -7,14 +7,23 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) =>
         cb(null, Date.now() + "-" + file.originalname),
 });
+const fileFilter = (req, file, cb) => {
+    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (allowedFileTypes.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
 
-const upload = multer({ storage });
+const upload = multer({ storage, fileFilter });
+
 const router = express.Router();
 
 router.post("/register", creatUser);
 router.get("/getAll", getUsers);
 router.post("/login", loginUser);
-router.put("/update", updateProfile);
+router.patch("/update", updateProfile);
 router.post("/upload-profile", upload.single("profileImage"), uploadProfile);
 
 export default router;

@@ -22,6 +22,8 @@ app.use(bodyParser.urlencoded())
 
 dbConnection();
 
+app.use("/uploads", express.static("uploads"));
+
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/", userRoutes);
 app.use("/api/v1/dashboard", dashboardrouter);
