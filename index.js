@@ -29,13 +29,13 @@ app.use("/api/v1/", userRoutes);
 app.use("/api/v1/dashboard", dashboardrouter);
 app.use("/api/v1/booking", bookingRoutes);
 app.use("/api/v1/service-center", serviceCenterRoutes);
-// Routes
-// app.use("/", (req, res) => {
-//   res.status(200).send("Server working properly");
-// });
+
+app.use("/", (req, res) => {
+  res.status(200).send("Server working properly");
+});
 // Start server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server listening on port ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });

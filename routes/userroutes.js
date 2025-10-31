@@ -20,7 +20,6 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage, fileFilter });
 
-
 router.post("/register", creatUser);
 router.get("/getAll", getUsers);
 router.post("/login", loginUser);
