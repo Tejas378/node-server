@@ -51,7 +51,6 @@ export const loginUser = async (req, res) => {
         message: "User not found."
       });
     }
-
     // Check password
     const checkIsValidPass = await compareHash(password, user.password);
     if (!checkIsValidPass) {
@@ -152,7 +151,7 @@ export const updateProfile = async (req, res) => {
   }
 };
 
-export const uploadProfile = async (req, res) => {
+export const uploadProfilePicture = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({
@@ -165,14 +164,16 @@ export const uploadProfile = async (req, res) => {
 
     const { email } = req.body
 
-    const user = await User.findOne({ email });
+    const user = await User.findOneAndUpdate(
+      { email },
+      { profileImage: filePath },
+      { new: true } // returns updated document
+    );
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
 
-    user.profileImage = filePath;
-
-    const result = await user.save();
+    console.log("Updated user:", user);
 
     return res.status(200).json({
       isSuccess: true,
@@ -182,7 +183,7 @@ export const uploadProfile = async (req, res) => {
         firstname: user.firstname,
         lastname: user.lastname,
         contactno: user.contactno,
-        profileImage: result.profileImage
+        profileImage: user.profileImage
       },
       message: "Profile updated successfully."
 
