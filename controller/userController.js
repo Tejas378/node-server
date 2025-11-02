@@ -161,17 +161,15 @@ export const uploadProfilePicture = async (req, res) => {
     }
     const { email } = req.body
     const result = await uploadImage(req, res)
-    // const user = await User.findOneAndUpdate(
-    //   { email },
-    //   { profileImage: result?.secure_url },
-    //   { new: true } // returns updated document
-    // );
-    // if (!user) {
-    //   return res.status(404).json({ error: "User not found" });
-    // }
-    res.status(200).json(result)
-
-
+    const user = await User.findOneAndUpdate(
+      { email },
+      { profileImage: result?.profileImage },
+      { new: true } // returns updated document
+    );
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    return res.status(200).json({ ...result })
   } catch (error) {
     console.error("Upload error:", error);
     logErrorToFile(error, "Upload file");

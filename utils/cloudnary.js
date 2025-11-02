@@ -22,6 +22,7 @@ export const uploadImage = async (req, res) => {
         // Convert file buffer to base64
         const base64Data = req.file.buffer.toString('base64');
         const fileUri = `data:${req.file.mimetype};base64,${base64Data}`;
+        console.log(fileUri);
 
         // Upload to Cloudinary
         const result = await cloudinary.uploader.upload(fileUri, {
@@ -32,10 +33,12 @@ export const uploadImage = async (req, res) => {
             invalidate: true,
         });
 
+        console.log(result);
+
         return {
             isSuccess: true,
             message: 'File uploaded successfully',
-            url: result.secure_url,
+            profileImage: result.secure_url,
             public_id: result.public_id,
         };
     } catch (error) {
