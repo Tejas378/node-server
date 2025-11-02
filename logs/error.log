@@ -1,0 +1,242 @@
+
+[2025-11-02T07:55:05.742Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:167:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:55:05.748Z] [Upload file]
+ReferenceError: res is not defined
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:46:9)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:167:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:55:53.041Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:167:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:55:53.051Z] [Upload file]
+TypeError: Cannot destructure property 'email' of 'req.body' as it is undefined.
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:169:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+--------------------------------------------------
+
+[2025-11-02T07:57:06.962Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:168:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:57:06.978Z] [Upload file]
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:655:11)
+    at ServerResponse.header (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:250:15)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:180:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+--------------------------------------------------
+
+[2025-11-02T07:57:35.983Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:168:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:57:35.994Z] [Upload file]
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:655:11)
+    at ServerResponse.header (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:250:15)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:180:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+--------------------------------------------------
+
+[2025-11-02T07:58:53.109Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:168:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:59:03.918Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:168:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:59:27.144Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:168:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T07:59:27.165Z] [Upload file]
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:655:11)
+    at ServerResponse.header (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:250:15)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:182:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+--------------------------------------------------
+
+[2025-11-02T08:00:33.216Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:168:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T08:00:33.236Z] [Upload file]
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:655:11)
+    at ServerResponse.header (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\express\lib\response.js:250:15)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:182:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+--------------------------------------------------
+
+[2025-11-02T08:01:03.113Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:168:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T08:01:32.129Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:19:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:170:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T08:02:02.694Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:21:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:170:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T08:02:28.475Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:21:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:170:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------
+
+[2025-11-02T08:03:04.194Z] [Upload file]
+TypeError: req.formData is not a function
+    at uploadImage (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/utils/cloudnary.js:21:32)
+    at uploadProfilePicture (file:///C:/Users/Tejas/Documents/Gaurage%20New/server/controller/userController.js:170:26)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Tejas\Documents\Gaurage New\server\node_modules\router\index.js:291:5)
+--------------------------------------------------

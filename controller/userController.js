@@ -2,7 +2,7 @@ import User from "./../models/user.js";
 import { compareHash, generateHash, generateJwtToken, verifyJwtToken } from "../utils/helper.js";
 import { profileSchema, signupSchema } from "../validastors/profileValidator.js";
 import { logErrorToFile } from "../utils/logger.js";
-import uploadImage from "../utils/cloudnary.js";
+import { uploadImage } from "../utils/cloudnary.js";
 
 
 export const creatUser = async (req, res) => {
@@ -159,15 +159,8 @@ export const uploadProfilePicture = async (req, res) => {
         message: "No file uploaded",
       });
     }
-
-    // const filePath = `/uploads/${req.file.filename}`;
-
-    const filePath = req.file.path;
-
-    const result = await uploadImage(filePath)
-
     const { email } = req.body
-
+    const result = await uploadImage(req, res)
     const user = await User.findOneAndUpdate(
       { email },
       { profileImage: result?.secure_url },
@@ -176,24 +169,13 @@ export const uploadProfilePicture = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
+    res.status(200).json(result)
 
-    return res.status(200).json({
-      isSuccess: true,
-      data: {
-        email: user.email,
-        id: user._id,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        contactno: user.contactno,
-        profileImage: result?.secure_url
-      },
-      message: "Profile updated successfully."
 
-    });
   } catch (error) {
     console.error("Upload error:", error);
-    logErrorToFile(error,"Upload file");
-    res.status(500).json({
+    logErrorToFile(error, "Upload file");
+    return res.status(500).json({
       isSuccess: false,
       message: "Internal server error",
     });
