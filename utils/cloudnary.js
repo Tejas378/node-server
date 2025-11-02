@@ -20,10 +20,10 @@ const uploadImage = async (imagePath) => {
         // Upload the image
         const result = await cloudinary.uploader.upload(imagePath, options);
 
-        const removeFile = fs.unlink((imagePath), (err) => {
-            err ? console.log(err) : console.log("Deleted file");
+        // const removeFile = fs.unlink((imagePath), (err) => {
+        //     err ? console.log(err) : console.log("Deleted file");
             
-        })
+        // })
         // console.log(result);
         return result;
     } catch (error) {
