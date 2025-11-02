@@ -1,6 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
-import fs from 'fs';
-
+import { logErrorToFile } from './logger';
 const uploadImage = async (imagePath) => {
 
     // Return "https" URLs by setting secure: true
