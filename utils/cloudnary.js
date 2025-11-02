@@ -28,8 +28,10 @@ const uploadImage = async (imagePath) => {
         return result;
     } catch (error) {
         logErrorToFile(error, "Upload file");
-        console.error(error);
-        return { isSuccess: false }
+        res.status(500).json({
+            isSuccess: false,
+            message: "Internal server error",
+        });
     }
 };
 export default uploadImage
