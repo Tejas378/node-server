@@ -13,7 +13,7 @@ const uploadImage = async (imagePath) => {
         use_filename: true,
         unique_filename: false,
         overwrite: true,
-        folder:"images"
+        folder: "images"
     };
 
     try {
@@ -22,12 +22,14 @@ const uploadImage = async (imagePath) => {
 
         // const removeFile = fs.unlink((imagePath), (err) => {
         //     err ? console.log(err) : console.log("Deleted file");
-            
+
         // })
         // console.log(result);
         return result;
     } catch (error) {
+        logErrorToFile(error, "Upload file");
         console.error(error);
+        return { isSuccess: false }
     }
 };
 export default uploadImage
