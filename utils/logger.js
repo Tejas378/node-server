@@ -8,6 +8,7 @@ if (!fs.existsSync(logDir)) {
 }
 
 const logFile = path.join(logDir, "error.log");
+
 export const logErrorToFile = (error, context = "General") => {
   const timestamp = new Date().toISOString();
 
