@@ -2,7 +2,7 @@ import User from "./../models/user.js";
 import { compareHash, generateHash, generateJwtToken, verifyJwtToken } from "../utils/helper.js";
 import { profileSchema, signupSchema } from "../validastors/profileValidator.js";
 import { logErrorToFile } from "../utils/logger.js";
-
+import uploadImage from "../utils/cloudnary.js";
 
 
 export const creatUser = async (req, res) => {
@@ -160,20 +160,22 @@ export const uploadProfilePicture = async (req, res) => {
       });
     }
 
-    const filePath = `/uploads/${req.file.filename}`;
+    // const filePath = `/uploads/${req.file.filename}`;
+
+    const filePath = req.file.path;
+
+    const result = await uploadImage(filePath)
 
     const { email } = req.body
 
     const user = await User.findOneAndUpdate(
       { email },
-      { profileImage: filePath },
+      { profileImage: result?.secure_url },
       { new: true } // returns updated document
     );
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-
-    console.log("Updated user:", user);
 
     return res.status(200).json({
       isSuccess: true,
@@ -183,7 +185,7 @@ export const uploadProfilePicture = async (req, res) => {
         firstname: user.firstname,
         lastname: user.lastname,
         contactno: user.contactno,
-        profileImage: user.profileImage
+        profileImage: result?.secure_url
       },
       message: "Profile updated successfully."
 
