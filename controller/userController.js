@@ -192,6 +192,7 @@ export const uploadProfilePicture = async (req, res) => {
     });
   } catch (error) {
     console.error("Upload error:", error);
+    logErrorToFile(error,"Upload file");
     res.status(500).json({
       isSuccess: false,
       message: "Internal server error",
